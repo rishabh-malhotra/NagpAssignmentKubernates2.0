@@ -4,4 +4,4 @@ COPY package.json /orderservice
 RUN npm install
 COPY . /orderservice
 CMD ["npm","start"]
-EXPOSE 61550
+EXPOSE 61551

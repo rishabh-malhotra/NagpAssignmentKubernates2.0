@@ -1,5 +1,6 @@
 const cors = require('cors')
 const express= require('express')
+const {db, User} = require('./db/dbindex')
 
 const app=express()
 app.use(express.json())
@@ -20,9 +21,19 @@ app.use(function(request,response,next){
 })
 
 const PORT_NUMBER=61550;
-
 app.use('/', require('./route')); 
 
-app.listen(PORT_NUMBER, () => {
-    console.log(`Server for UserService started at http://localhost:${PORT_NUMBER}`)
-});
+db.sync().then(() => {
+    console.log('Database Synced')
+    User.create({
+        name: "rishabh",
+        email:"rishabh@gmail.com",
+        age:23
+    })
+    app.listen(PORT_NUMBER, () => {
+        console.log(`UserService started at http://localhost:${PORT_NUMBER}`)
+    });
+}).catch(console.error)
+
+
+

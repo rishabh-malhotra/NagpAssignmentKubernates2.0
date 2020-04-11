@@ -4,4 +4,4 @@ COPY package.json /aggregateservice
 RUN npm install
 COPY . /aggregateservice
 CMD ["npm","start"]
-EXPOSE 61550
+EXPOSE 61552

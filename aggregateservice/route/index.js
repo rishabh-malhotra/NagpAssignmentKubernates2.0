@@ -2,15 +2,13 @@ const { Router } = require('express')
 const router = Router();
 const request = require('request');
 
-const USER_SERVICE_URL = "userservice-deployment.default.svc.cluster.local"
-const ORDER_SERVICE_URL = "orderservice-deployment.default.svc.cluster.local"
-
+const USER_SERVICE_URL =process.env.userServiceURL||'localhost:61550'
+const ORDER_SERVICE_URL=process.env.OrderServiceURL||'localhost:61551'
 
 router.get('/orderdetails/:id', async (request, response) => {
 
     try 
     {
-        
         let id = request.params.id;
         console.log("Id for which data is requested in aggrgate service:"+id)
         
