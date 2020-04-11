@@ -1,0 +1,19 @@
+{
+  "name": "userservice",
+  "version": "1.0.0",
+  "description": "user microservice",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "microservice",
+    "node"
+  ],
+  "author": "rishabhmalhotra",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
