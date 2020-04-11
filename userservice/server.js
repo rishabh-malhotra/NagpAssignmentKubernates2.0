@@ -1,6 +1,21 @@
 const cors = require('cors')
 const express= require('express')
 const {db, User} = require('./db/dbindex')
+const rn = require('random-number')
+
+const options = {
+    min:  0
+  , max:  1000
+  , integer: true
+  };
+const randomNumber=rn(options)
+
+const optionsforAge = {
+    min:  22
+  , max:  45
+  , integer: true
+  };
+const randomAge=rn(optionsforAge)
 
 const app=express()
 app.use(express.json())
@@ -24,11 +39,12 @@ const PORT_NUMBER=61550;
 app.use('/', require('./route')); 
 
 db.sync().then(() => {
+    var username="user"+randomNumber
     console.log('Database Synced')
     User.create({
-        name: "rishabh",
-        email:"rishabh@gmail.com",
-        age:23
+        name: username,
+        email:username+"@gmail.com",
+        age:randomAge
     })
     app.listen(PORT_NUMBER, () => {
         console.log(`UserService started at http://localhost:${PORT_NUMBER}`)
