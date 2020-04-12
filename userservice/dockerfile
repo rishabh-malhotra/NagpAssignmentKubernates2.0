@@ -1,7 +1,7 @@
 FROM node:8-alpine
-WORKDIR /userservice
-COPY package.json /userservice
+WORKDIR /nagp-userservice
+COPY package.json /nagp-userservice
 RUN npm install
-COPY . /userservice
+COPY . /nagp-userservice
 CMD ["npm","start"]
 EXPOSE 61550

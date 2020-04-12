@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: aggregateservice-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aggregateservice
+  template:
+    metadata:
+      labels:
+        app: aggregateservice
+    spec:
+      containers:
+      - name: aggrgateservice
+        image: rishabhmalhotra/practiceaggregateservice
+        ports:
+        - containerPort: 61552
+        env:
+          - name: USERSERVICEURL
+            valueFrom:
+              configMapKeyRef:
+                name: aggregator-config
+                key: user.url
+          - name: ORDERSERVICEURL
+            valueFrom:
+              configMapKeyRef:
+                name: aggregator-config
+                key: orders.url
+          - name: collectorEndpoint
+            valueFrom:
+              configMapKeyRef:
+                name: aggregator-config
+                key: jaeger.url       

@@ -1,7 +1,7 @@
 FROM node:8-alpine
-WORKDIR /orderservice
-COPY package.json /orderservice
+WORKDIR /nagp-orderservice
+COPY package.json /nagp-orderservice
 RUN npm install
-COPY . /orderservice
+COPY . /nagp-orderservice
 CMD ["npm","start"]
 EXPOSE 61551

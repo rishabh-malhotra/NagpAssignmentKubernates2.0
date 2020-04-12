@@ -1,7 +1,7 @@
 FROM node:8-alpine
-WORKDIR /aggregateservice
-COPY package.json /aggregateservice
+WORKDIR /nagp-aggregateservice
+COPY package.json /nagp-aggregateservice
 RUN npm install
-COPY . /aggregateservice
+COPY . /nagp-aggregateservice
 CMD ["npm","start"]
 EXPOSE 61552
